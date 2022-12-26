@@ -34,16 +34,15 @@ export const MoviesById = () => {
         src={`https://image.tmdb.org/t/p/w500/${deteils.poster_path}`}
         alt={deteils.name}
       />
-      {(deteils.name = true > 0 && <h2>{deteils.name}</h2>)}
-      {(deteils.original_title = true > 0 && <h2>{deteils.original_title}</h2>)}
+      <h2>{deteils.title ? deteils.title : deteils.name}</h2>
       <p>Use Score: {deteils.popularity}</p>
       <p>Overview: {deteils.overview}</p>
-      <p>
+      <span>
         Genres:
         {deteils.genres.map(genres => (
           <p>{genres.name}</p>
         ))}
-      </p>
+      </span>
       <ul>
         <li>
           <Link to="cast">Read about our mission</Link>

@@ -11,19 +11,16 @@ export const FilmList = ({ movies }) => {
   return (
     <ListSection>
       <List>
-        {movies.map(({ poster_path, id, name, original_title }) => (
+        {movies.map(({ poster_path, id, name, title }) => (
           <Item key={id}>
             <Link to={`/movies/${id}`}>
               <ImageGalleryItemimage
                 src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                 alt={name}
               />
-              {(name = true > 0 && <FilmName>{name}</FilmName>)}
-              {
-                (original_title = true > 0 && (
-                  <FilmName>{original_title}</FilmName>
-                ))
-              }
+              <FilmName>{title ? title : name}</FilmName>
+              {/* {(name = true > 0 && <FilmName>{name}</FilmName>)}
+              {(title = true > 0 && <FilmName>{title}</FilmName>)} */}
             </Link>
           </Item>
         ))}
