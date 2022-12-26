@@ -35,7 +35,7 @@ export const getCast = async id => {
 `
   );
   console.log(response.data);
-  return response.data;
+  return response.data.cast;
 };
 
 export const getReviews = async id => {
