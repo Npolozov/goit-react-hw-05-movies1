@@ -5,19 +5,19 @@ import { getMoviesbyId } from '../api';
 export const MoviesById = () => {
   const { id } = useParams();
   const [deteils, setDeteils] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getMovies() {
       try {
-        setLoading(true);
+        // setLoading(true);
         const moviesDeteils = await getMoviesbyId(id);
         console.log(moviesDeteils);
         setDeteils(moviesDeteils);
       } catch (error) {
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     }
 

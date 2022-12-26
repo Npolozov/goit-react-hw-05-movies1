@@ -13,7 +13,7 @@ export const FilmList = ({ movies }) => {
       <List>
         {movies.map(({ poster_path, id, name, original_title }) => (
           <Item key={id}>
-            <Link to={`${id}`}>
+            <Link to={`/movies/${id}`}>
               <ImageGalleryItemimage
                 src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                 alt={name}

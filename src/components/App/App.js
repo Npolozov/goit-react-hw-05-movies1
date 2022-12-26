@@ -17,10 +17,11 @@ export const App = () => {
           <Link to="/movies">Movies</Link>
         </Header>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:id" element={<MoviesById />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="movies/:id" element={<MoviesById />} />
+          <Route path="/">
+            <Route index element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="movies/:id" element={<MoviesById />} />
+          </Route>
         </Routes>
       </Container>
       <GlobalStyle />
