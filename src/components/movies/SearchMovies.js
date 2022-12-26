@@ -8,7 +8,7 @@ import { FiSearch } from 'react-icons/fi';
 import { ToastContainer, toast } from 'react-toastify';
 import { useState } from 'react';
 
-export const SearchMovies = ({ onSubmit }) => {
+export const SearchMovies = ({ onSubmit, value }) => {
   const [query, setQuery] = useState('');
   const handelFormChange = event => {
     setQuery(event.currentTarget.value.toLowerCase());
@@ -26,7 +26,7 @@ export const SearchMovies = ({ onSubmit }) => {
     <InputSection>
       <SearchForm onSubmit={handelSubmit}>
         <Input
-          value={query}
+          defaultValue={value}
           type="text"
           placeholder="Search films"
           onChange={handelFormChange}

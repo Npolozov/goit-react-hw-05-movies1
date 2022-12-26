@@ -5,6 +5,7 @@ import { Container, Header, Link } from './App.styled';
 import { GlobalStyle } from '../GlobalStyle.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import { MoviesById } from 'components/movies/MoviesById';
+import { Cast } from './Cast';
 
 export const App = () => {
   return (
@@ -20,7 +21,10 @@ export const App = () => {
           <Route path="/">
             <Route index element={<Home />} />
             <Route path="/movies" element={<Movies />} />
-            <Route path="movies/:id" element={<MoviesById />} />
+            <Route path="movies/:id" element={<MoviesById />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Cast />} />
+            </Route>
           </Route>
         </Routes>
       </Container>

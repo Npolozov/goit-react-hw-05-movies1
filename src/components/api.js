@@ -28,3 +28,21 @@ export const getMoviesbyId = async id => {
   console.log(response.data);
   return response.data;
 };
+
+export const getCast = async id => {
+  const response = await axios.get(
+    `3/movie/${id}/credits?api_key=0b525a53cb370404cdd4aabe5119e729&language=en-US
+`
+  );
+  console.log(response.data);
+  return response.data;
+};
+
+export const getReviews = async id => {
+  const response = await axios.get(
+    `3/movie/${id}/reviews?api_key=0b525a53cb370404cdd4aabe5119e729&language=en-US&page=1
+`
+  );
+  console.log(response.data);
+  return response.data;
+};

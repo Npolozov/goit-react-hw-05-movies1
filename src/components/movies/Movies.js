@@ -4,28 +4,40 @@ import { getMoviesbyQuery } from 'components/api';
 import { ToastContainer, toast } from 'react-toastify';
 import { SearchMovies } from './SearchMovies';
 import { FilmList } from 'components/App/FilmList';
+import { useSearchParams } from 'react-router-dom';
 
 export const Movies = () => {
-  const [query, setQuery] = useState('');
-  const [error, setError] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query') ?? '';
   const [movies, setMovies] = useState([]);
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const productName = searchParams.get('name') ?? '';
   // const [isLoading, setIsLoading] = useState(false);
 
-  const handlelFormSubmit = query => {
-    setQuery(query);
-    setError(null);
-    setMovies([]);
-    // setIsLoading(false);
+  // const updateQueryString = name => {
+  //   const nextParams = name !== '' ? { name } : {};
+  //   setSearchParams(nextParams);
+  // };
+
+  // const handlelFormSubmit = query => {
+  //   setQuery(query);
+  //   setError(null);
+  //   setMovies([]);
+  //   updateQueryString();
+  // };
+
+  const onSubmit = value => {
+    setSearchParams(value !== '' ? { query: value } : {});
   };
 
   useEffect(() => {
-    if (query === '') {
+    if (searchQuery === '') {
       return;
     }
     async function getFilm() {
       try {
         // setIsLoading(true);
-        const movies = await getMoviesbyQuery(query);
+        const movies = await getMoviesbyQuery(searchQuery);
         console.log(movies);
 
         if (movies.length === 0) {
@@ -42,13 +54,13 @@ export const Movies = () => {
       }
     }
     getFilm();
-  }, [query]);
+  }, [searchQuery]);
 
   return (
     <>
-      <SearchMovies onSubmit={handlelFormSubmit} />
-      {error && <p>{error}</p>}
-      {query && <FilmList movies={movies} />}
+      <SearchMovies onSubmit={onSubmit} value={searchQuery} />
+      {/* {error && <p>{error}</p>} */}
+      {searchQuery && <FilmList movies={movies} />}
       <ToastContainer autoClose={2000} position="top-right" />
     </>
   );

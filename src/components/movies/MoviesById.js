@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { getMoviesbyId } from '../api';
 
 export const MoviesById = () => {
@@ -29,7 +29,7 @@ export const MoviesById = () => {
   }
 
   return (
-    <div key={deteils.id}>
+    <>
       <img
         src={`https://image.tmdb.org/t/p/w500/${deteils.poster_path}`}
         alt={deteils.name}
@@ -44,6 +44,15 @@ export const MoviesById = () => {
           <p>{genres.name}</p>
         ))}
       </p>
-    </div>
+      <ul>
+        <li>
+          <Link to="cast">Read about our mission</Link>
+        </li>
+        <li>
+          <Link to="reviews">Go through the reviews</Link>
+        </li>
+      </ul>
+      <Outlet />
+    </>
   );
 };
