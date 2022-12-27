@@ -34,7 +34,7 @@ export const NavigationLink = styled(NavLink)`
   }
 `;
 
-export const filmList = styled.section`
+export const filmsDeteils = styled.section`
   display: flex;
 `;
 

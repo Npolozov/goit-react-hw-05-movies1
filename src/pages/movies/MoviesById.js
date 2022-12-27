@@ -2,7 +2,12 @@ import { Loadder } from 'helpers/Loadder';
 import { useState, useEffect } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { getMoviesbyId } from '../../helpers/api';
-import { Link, NavigationLink, filmList, Paragraf } from './MoviesById.styled';
+import {
+  Link,
+  NavigationLink,
+  filmsDeteils,
+  Paragraf,
+} from './MoviesById.styled';
 
 const ERROR_MESSAGE = 'Произошла ошыбка';
 
@@ -48,12 +53,10 @@ export const MoviesById = () => {
             </NavigationLink>
           </div>
           <filmsDeteils>
-            <div>
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${deteils.poster_path}`}
-                alt={deteils.name}
-              />
-            </div>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${deteils.poster_path}`}
+              alt={deteils.name}
+            />
             <div>
               <h2>
                 {deteils.title ? deteils.title : deteils.name}(
