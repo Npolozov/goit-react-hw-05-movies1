@@ -49,7 +49,7 @@ export const AdditionalSection = styled.section`
   padding: 30px 0 30px 0;
 `;
 
-export const TitleText = styled.p`
+export const TitleText = styled.h2`
   margin-bottom: 20px;
   font-weight: 600;
   font-size: 22px;

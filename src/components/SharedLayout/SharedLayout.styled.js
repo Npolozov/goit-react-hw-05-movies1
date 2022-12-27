@@ -21,3 +21,12 @@ export const Link = styled(NavLink)`
     background-color: orangered;
   }
 `;
+
+export const Footer = styled.footer`
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  margin-bottom: 30px;
+  border-top: 1px solid black;
+  margin-bottom: auto;
+`;

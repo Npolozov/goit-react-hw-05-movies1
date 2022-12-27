@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { FilmList } from 'components/filmList/FilmList';
 import { ToastContainer, toast } from 'react-toastify';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     async function getTrendingMovies() {
@@ -24,3 +24,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;

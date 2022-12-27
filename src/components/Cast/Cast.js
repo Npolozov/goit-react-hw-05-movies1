@@ -4,7 +4,7 @@ import { getCast } from '../../helpers/api';
 import { Item, ImageGalleryItemimage, ActorName, List } from './Cast.styled';
 import { Loadder } from '../../helpers/Loadder';
 
-export const Cast = () => {
+const Cast = () => {
   const { id } = useParams();
   const [casts, setCast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,20 +32,24 @@ export const Cast = () => {
   return (
     <>
       {isLoading && <Loadder />}
-      <List>
-        {casts.map(
-          ({ name, profile_path }) =>
-            profile_path && (
-              <Item key={name}>
-                <ImageGalleryItemimage
-                  src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
-                  alt={name}
-                />
-                <ActorName>{name}</ActorName>
-              </Item>
-            )
-        )}
-      </List>
+      {casts.length > 0 && (
+        <List>
+          {casts.map(
+            ({ name, profile_path }) =>
+              profile_path && (
+                <Item key={name}>
+                  <ImageGalleryItemimage
+                    src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+                    alt={name}
+                  />
+                  <ActorName>{name}</ActorName>
+                </Item>
+              )
+          )}
+        </List>
+      )}
     </>
   );
 };
+
+export default Cast;

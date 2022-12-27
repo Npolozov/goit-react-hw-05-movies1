@@ -7,7 +7,7 @@ import { FilmList } from 'components/filmList/FilmList';
 import { useSearchParams } from 'react-router-dom';
 import { Loadder } from 'helpers/Loadder';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') ?? '';
   const [movies, setMovies] = useState([]);
@@ -67,3 +67,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

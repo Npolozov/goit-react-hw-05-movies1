@@ -1,5 +1,5 @@
 import { Loadder } from 'helpers/Loadder';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { getMoviesbyId } from '../../helpers/api';
 import {
@@ -93,7 +93,9 @@ export const MoviesById = () => {
               </li>
             </LinkList>
           </AdditionalSection>
-          <Outlet />
+          <Suspense>
+            <Outlet />
+          </Suspense>
         </>
       )}
     </>

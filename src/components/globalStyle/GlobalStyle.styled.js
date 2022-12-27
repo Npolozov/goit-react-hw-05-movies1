@@ -12,6 +12,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: lightgray;
+   min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 code {
