@@ -12,8 +12,6 @@ export const Movies = () => {
   const searchQuery = searchParams.get('query') ?? '';
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const productName = searchParams.get('name') ?? '';
   const [isLoading, setIsLoading] = useState(false);
 
   // const updateQueryString = name => {

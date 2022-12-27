@@ -1,26 +1,21 @@
 import { Movies } from '../../pages/movies/Movies';
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../../pages/home/Home';
-import { Container, Header, Link } from './App.styled';
+import { Container } from './App.styled';
 import { GlobalStyle } from '../globalStyle/GlobalStyle.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import { MoviesById } from 'pages/movies/MoviesById';
 import { Cast } from '../Cast/Cast';
 import { Reviews } from '../Reviews/Reviews';
 import { NotFound } from 'pages/notFound/NotFound';
+import { Layout } from 'components/SharedLayout/SharedLayout';
 
 export const App = () => {
   return (
     <>
       <Container>
-        <Header>
-          <Link to="/" end>
-            Home
-          </Link>
-          <Link to="/movies">Movies</Link>
-        </Header>
         <Routes>
-          <Route path="/">
+          <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="*" element={<NotFound />} />

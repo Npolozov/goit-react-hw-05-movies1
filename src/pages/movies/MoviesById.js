@@ -1,7 +1,8 @@
 import { Loadder } from 'helpers/Loadder';
 import { useState, useEffect } from 'react';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { getMoviesbyId } from '../../helpers/api';
+import { Link, NavigationLink, filmList, Paragraf } from './MoviesById.styled';
 
 const ERROR_MESSAGE = 'Произошла ошыбка';
 
@@ -10,8 +11,8 @@ export const MoviesById = () => {
   const [deteils, setDeteils] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const location = useLocation();
 
-  getMoviesbyId(id);
   useEffect(() => {
     async function getMovies() {
       try {
@@ -42,39 +43,47 @@ export const MoviesById = () => {
       {deteils && (
         <>
           <div>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${deteils.poster_path}`}
-              alt={deteils.name}
-            />
-            <h2>
-              {deteils.title ? deteils.title : deteils.name}(
-              {new Date(deteils.release_date).getFullYear()})
-            </h2>
+            <NavigationLink to={location.state?.from ?? '/movies'}>
+              Go Back
+            </NavigationLink>
           </div>
+          <filmsDeteils>
+            <div>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${deteils.poster_path}`}
+                alt={deteils.name}
+              />
+            </div>
+            <div>
+              <h2>
+                {deteils.title ? deteils.title : deteils.name}(
+                {new Date(deteils.release_date).getFullYear()})
+              </h2>
+              <Paragraf>Use Score: {deteils.vote_average.toFixed(1)}</Paragraf>
+              <p>Overview: {deteils.overview}</p>
+              <span>
+                Genres:
+                {deteils.genres.map(genres => (
+                  <p>{genres.name}</p>
+                ))}
+              </span>
+            </div>
+          </filmsDeteils>
+
           <div>
-            <p>Use Score: {deteils.vote_average.toFixed(1)}</p>
-            <p>Overview: {deteils.overview}</p>
-            <span>
-              Genres:
-              {deteils.genres.map(genres => (
-                <p>{genres.name}</p>
-              ))}
-            </span>
+            <ul>
+              <li>
+                <Link to="cast">Cast</Link>
+              </li>
+              <li>
+                <Link to="reviews">Reviews</Link>
+              </li>
+            </ul>
           </div>
+          <p></p>
+          <Outlet />
         </>
       )}
-      <div>
-        <ul>
-          <li>
-            <Link to="cast">Cast</Link>
-          </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
-          </li>
-        </ul>
-      </div>
-      <p></p>
-      <Outlet />
     </>
   );
 };
