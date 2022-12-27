@@ -4,7 +4,7 @@ import { Home } from '../../pages/home/Home';
 import { Container } from './App.styled';
 import { GlobalStyle } from '../globalStyle/GlobalStyle.styled';
 import 'react-toastify/dist/ReactToastify.css';
-import { MoviesById } from 'pages/movies/MoviesById';
+import { MoviesById } from 'pages/filmDeteils/MoviesById';
 import { Cast } from '../Cast/Cast';
 import { Reviews } from '../Reviews/Reviews';
 import { NotFound } from 'pages/notFound/NotFound';

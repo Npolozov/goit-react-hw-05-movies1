@@ -5,8 +5,13 @@ import { getMoviesbyId } from '../../helpers/api';
 import {
   Link,
   NavigationLink,
-  filmsDeteils,
-  Paragraf,
+  FilmsDeteils,
+  LinkList,
+  AdditionalSection,
+  ParagrafText,
+  SpanText,
+  TitleText,
+  ImageFilms,
 } from './MoviesById.styled';
 
 const ERROR_MESSAGE = 'Произошла ошыбка';
@@ -52,38 +57,42 @@ export const MoviesById = () => {
               Go Back
             </NavigationLink>
           </div>
-          <filmsDeteils>
-            <img
+          <FilmsDeteils>
+            <ImageFilms
               src={`https://image.tmdb.org/t/p/w500/${deteils.poster_path}`}
               alt={deteils.name}
             />
             <div>
-              <h2>
+              <TitleText>
                 {deteils.title ? deteils.title : deteils.name}(
                 {new Date(deteils.release_date).getFullYear()})
-              </h2>
-              <Paragraf>Use Score: {deteils.vote_average.toFixed(1)}</Paragraf>
-              <p>Overview: {deteils.overview}</p>
-              <span>
+              </TitleText>
+              <ParagrafText>
+                Use Score:
+                <SpanText>{deteils.vote_average.toFixed(1)}</SpanText>
+              </ParagrafText>
+              <ParagrafText>
+                Overview:<SpanText>{deteils.overview}</SpanText>
+              </ParagrafText>
+              <ParagrafText>
                 Genres:
                 {deteils.genres.map(genres => (
-                  <p>{genres.name}</p>
+                  <SpanText>{genres.name}</SpanText>
                 ))}
-              </span>
+              </ParagrafText>
             </div>
-          </filmsDeteils>
-
-          <div>
-            <ul>
+          </FilmsDeteils>
+          <AdditionalSection>
+            <TitleText>Additional information</TitleText>
+            <LinkList>
               <li>
                 <Link to="cast">Cast</Link>
               </li>
               <li>
                 <Link to="reviews">Reviews</Link>
               </li>
-            </ul>
-          </div>
-          <p></p>
+            </LinkList>
+          </AdditionalSection>
           <Outlet />
         </>
       )}

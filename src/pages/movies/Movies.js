@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { getMoviesbyQuery } from 'helpers/api';
 import { ToastContainer, toast } from 'react-toastify';
-import { SearchMovies } from './SearchMovies';
+import { SearchMovies } from '../searchMoviesList/SearchMovies';
 import { FilmList } from 'components/filmList/FilmList';
 import { useSearchParams } from 'react-router-dom';
 import { Loadder } from 'helpers/Loadder';
