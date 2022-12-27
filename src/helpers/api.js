@@ -43,6 +43,6 @@ export const getReviews = async id => {
     `3/movie/${id}/reviews?api_key=0b525a53cb370404cdd4aabe5119e729&language=en-US&page=1
 `
   );
-  console.log(response.data);
-  return response.data;
+  console.log(response.data.results);
+  return response.data.results;
 };

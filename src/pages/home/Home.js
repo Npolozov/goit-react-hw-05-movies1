@@ -1,6 +1,6 @@
-import { getMovies } from 'components/api';
+import { getMovies } from 'helpers/api';
 import { useEffect, useState } from 'react';
-import { FilmList } from 'components/App/FilmList';
+import { FilmList } from 'components/filmList/FilmList';
 import { ToastContainer, toast } from 'react-toastify';
 
 export const Home = () => {
@@ -12,7 +12,7 @@ export const Home = () => {
         console.log(movies);
         setMovies(movies);
       } catch (error) {
-        toast.error('Нет данных');
+        toast.error('There is no data');
       }
     }
     getTrendingMovies();

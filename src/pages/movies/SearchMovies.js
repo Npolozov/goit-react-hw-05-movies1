@@ -3,7 +3,7 @@ import {
   SearchFormButton,
   Input,
   InputSection,
-} from './SearchMoviesstyled';
+} from './SearchMovies.styled';
 import { FiSearch } from 'react-icons/fi';
 import { ToastContainer, toast } from 'react-toastify';
 import { useState } from 'react';
@@ -17,7 +17,7 @@ export const SearchMovies = ({ onSubmit, value }) => {
   const handelSubmit = e => {
     e.preventDefault();
     if (query.trim() === '') {
-      toast.error('Введите название фильма');
+      toast.error('Enter movie title');
     }
     onSubmit(query);
     setQuery('');
