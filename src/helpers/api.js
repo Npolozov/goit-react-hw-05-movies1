@@ -46,3 +46,5 @@ export const getReviews = async id => {
   console.log(response.data.results);
   return response.data.results;
 };
+
+// https://api.themoviedb.org/3/movie/436270/videos?api_key=0b525a53cb370404cdd4aabe5119e729&language=en-US
