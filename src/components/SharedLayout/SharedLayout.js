@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header, Link, Footer } from './SharedLayout.styled';
+import { Header, Link } from './SharedLayout.styled';
 
 export const Layout = () => {
   return (
@@ -14,9 +14,6 @@ export const Layout = () => {
       <Suspense fullback={null}>
         <Outlet />
       </Suspense>
-      <Footer>
-        <div>Footer</div>
-      </Footer>
     </>
   );
 };
