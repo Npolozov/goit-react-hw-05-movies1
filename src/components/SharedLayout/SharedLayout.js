@@ -14,6 +14,9 @@ export const Layout = () => {
       <Suspense fullback={null}>
         <Outlet />
       </Suspense>
+      {/* <Footer>
+        <div>Footer</div>
+      </Footer> */}
     </>
   );
 };
