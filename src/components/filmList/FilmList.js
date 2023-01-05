@@ -21,8 +21,6 @@ export const FilmList = ({ movies }) => {
                 alt={name}
               />
               <FilmName>{title ? title : name}</FilmName>
-              {/* {(name = true > 0 && <FilmName>{name}</FilmName>)}
-              {(title = true > 0 && <FilmName>{title}</FilmName>)} */}
             </Link>
           </Item>
         ))}
