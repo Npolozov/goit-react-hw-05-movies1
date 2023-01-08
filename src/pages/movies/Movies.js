@@ -7,6 +7,8 @@ import { FilmList } from 'components/filmList/FilmList';
 import { useSearchParams } from 'react-router-dom';
 import { Loadder } from 'helpers/Loadder';
 
+const ERROR_MESSAGE = 'Произошла ошыбка';
+
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') ?? '';
@@ -39,16 +41,16 @@ const Movies = () => {
         setIsLoading(true);
         const movies = await getMoviesbyQuery(searchQuery);
 
-        if (movies.length === 0) {
-          toast.error(
-            'Sorry, there are no films matching your search query. Please try again.'
-          );
-          return;
-        }
+        // if (movies.length === 0) {
+        //   toast.error(
+        //     'Sorry, there are no films matching your search query. Please try again.'
+        //   );
+        //   return;
+        // }
         setMovies(movies);
       } catch (error) {
         console.log(error);
-        setError(error.message);
+        setError(ERROR_MESSAGE);
         setMovies([]);
       } finally {
         setIsLoading(false);
@@ -62,7 +64,7 @@ const Movies = () => {
       <SearchMovies onSubmit={onSubmit} value={searchQuery} />
       {isLoading && <Loadder />}
       {error && <p>{error}</p>}
-      {searchQuery && <FilmList movies={movies} />}
+      {searchQuery && !isLoading && <FilmList movies={movies} />}
       <ToastContainer autoClose={2000} position="top-right" />
     </>
   );
