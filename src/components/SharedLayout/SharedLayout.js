@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header, Link } from './SharedLayout.styled';
+import { Loadder } from 'helpers/Loadder';
 
 export const Layout = () => {
   return (
@@ -11,7 +12,7 @@ export const Layout = () => {
         </Link>
         <Link to="/movies">Movies</Link>
       </Header>
-      <Suspense fullback={null}>
+      <Suspense fullback={<Loadder />}>
         <Outlet />
       </Suspense>
       {/* <Footer>

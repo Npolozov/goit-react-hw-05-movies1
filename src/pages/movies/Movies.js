@@ -41,12 +41,12 @@ const Movies = () => {
         setIsLoading(true);
         const movies = await getMoviesbyQuery(searchQuery);
 
-        // if (movies.length === 0) {
-        //   toast.error(
-        //     'Sorry, there are no films matching your search query. Please try again.'
-        //   );
-        //   return;
-        // }
+        if (movies.length === 0) {
+          toast.error(
+            'Sorry, there are no films matching your search query. Please try again.'
+          );
+          return;
+        }
         setMovies(movies);
       } catch (error) {
         console.log(error);
