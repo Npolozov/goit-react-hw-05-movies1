@@ -91,6 +91,9 @@ export const MoviesById = () => {
               <li>
                 <Link to="reviews">Reviews</Link>
               </li>
+              <li>
+                <Link to="video">Trailer</Link>
+              </li>
             </LinkList>
           </AdditionalSection>
           <Suspense>

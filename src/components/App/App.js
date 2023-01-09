@@ -10,6 +10,7 @@ import { MoviesById } from 'pages/filmDeteils/MoviesById';
 // import { NotFound } from 'pages/notFound/NotFound';
 import { Layout } from 'components/SharedLayout/SharedLayout';
 import { lazy } from 'react';
+import { Video } from 'components/Video/Video';
 
 export const App = () => {
   const Movies = lazy(() => import('pages/movies/Movies'));
@@ -28,6 +29,7 @@ export const App = () => {
             <Route path="movies/:id" element={<MoviesById />}>
               <Route path="cast" element={<Cast />} />
               <Route path="reviews" element={<Reviews />} />
+              <Route path="video" element={<Video/>} />
             </Route>
           </Route>
         </Routes>

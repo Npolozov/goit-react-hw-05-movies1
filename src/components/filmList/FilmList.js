@@ -17,7 +17,11 @@ export const FilmList = ({ movies }) => {
           <Item key={id}>
             <Link to={`/movies/${id}`} state={{ from: location }}>
               <ImageGalleryItemimage
-                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                src={
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                    : 'https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-'
+                }
                 alt={name}
               />
               <FilmName>{title ? title : name}</FilmName>
