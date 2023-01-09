@@ -19,7 +19,7 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <FilmList movies={movies} />
+      {movies?.length > 0 && <FilmList movies={movies} />}
       <ToastContainer autoClose={2000} position="top-right" />
     </div>
   );
