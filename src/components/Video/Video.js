@@ -31,7 +31,7 @@ export const Video = () => {
   }
 
   const trailer = video.find(vid => vid.name === 'Official Trailer');
-  console.log(trailer);
+  const key = trailer ? trailer.key : video[0].key;
   const opts = {
     height: '500px',
     width: '100%',
@@ -39,7 +39,7 @@ export const Video = () => {
 
   return (
     <Container>
-      <YouTube videoId={trailer.key} opts={opts} />
+      <YouTube videoId={key} opts={opts} />
     </Container>
   );
 };
