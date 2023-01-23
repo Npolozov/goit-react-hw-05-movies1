@@ -1,22 +1,21 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-
 export const ListSection = styled.section`
-padding-bottom: 50px;
-`
+  padding-bottom: 50px;
+`;
 
 export const Item = styled.li`
-  background: white;
-  border-radius: 4px;
-  border-radius: 2px;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-
+  width: 100%;
+  border-radius: 5px;
+  transition-property: box-shadow, transform;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   &:hover,
   &:focus {
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-      1px 4px 6px rgba(0, 0, 0, 0.16);
+    cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: 0 0 20px -1px orange;
   }
 `;
 
