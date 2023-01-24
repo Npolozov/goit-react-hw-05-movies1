@@ -13,6 +13,7 @@ import {
   TitleText,
   ImageFilms,
 } from './MoviesById.styled';
+import { nanoid } from 'nanoid';
 
 const ERROR_MESSAGE = 'Произошла ошыбка';
 
@@ -46,6 +47,19 @@ export const MoviesById = () => {
     return;
   }
 
+  const genresFilms = () => {
+    if (deteils.genres.length > 3 || deteils.genres.length < 3) {
+      const movieGenres = deteils.genres.slice(0, 2);
+      const newObject = { id: nanoid(), name: 'Other' };
+      movieGenres.push(newObject);
+      return movieGenres.map(genres => genres.name).join(', ');
+    }
+    return deteils.genres.map(genres => genres.name).join(', ');
+  };
+
+  const genre = genresFilms();
+  console.log(genre);
+
   return (
     <>
       {loading && <Loadder />}
@@ -75,10 +89,7 @@ export const MoviesById = () => {
                 Overview:<SpanText>{deteils.overview}</SpanText>
               </ParagrafText>
               <ParagrafText>
-                Genres:
-                {deteils.genres.map(genres => (
-                  <SpanText>{genres.name}</SpanText>
-                ))}
+                Genres:<SpanText>{genre}</SpanText>{' '}
               </ParagrafText>
             </div>
           </FilmsDeteils>
