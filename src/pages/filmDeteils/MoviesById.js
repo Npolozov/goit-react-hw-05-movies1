@@ -12,16 +12,23 @@ import {
   SpanText,
   TitleText,
   ImageFilms,
+  Button,
 } from './MoviesById.styled';
+import { useLocalStorage } from 'helpers/hooks';
 import { nanoid } from 'nanoid';
 
 const ERROR_MESSAGE = 'Произошла ошыбка';
+const initialStickers = [];
 
 export const MoviesById = () => {
   const { id } = useParams();
   const [deteils, setDeteils] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [moviesList, setMoviesList] = useLocalStorage(
+    'contact',
+    initialStickers
+  );
   const location = useLocation();
 
   useEffect(() => {
@@ -58,7 +65,15 @@ export const MoviesById = () => {
   };
 
   const genre = genresFilms();
-  console.log(genre);
+
+  const addMovies = () => {
+    if (!moviesList) {
+      return;
+    }
+    setMoviesList([...moviesList, deteils]);
+    console.log(deteils);
+    console.log(moviesList);
+  };
 
   return (
     <>
@@ -91,6 +106,18 @@ export const MoviesById = () => {
               <ParagrafText>
                 Genres:<SpanText>{genre}</SpanText>{' '}
               </ParagrafText>
+              <div
+                style={{
+                  marginTop: 50,
+                  display: 'flex',
+                  gap: 10,
+                }}
+              >
+                <Button onClick={() => addMovies(deteils)}>
+                  AddMoviesList
+                </Button>
+                <Button>AddWatchedList</Button>
+              </div>
             </div>
           </FilmsDeteils>
           <AdditionalSection>

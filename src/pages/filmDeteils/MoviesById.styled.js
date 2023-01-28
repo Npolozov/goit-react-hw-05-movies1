@@ -77,3 +77,17 @@ export const SpanText = styled.span`
 export const ImageFilms = styled.img`
   height: 500px;
 `;
+
+export const Button = styled.button`
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+
+
+  :hover {
+    color: white;
+    background-color: orangered;
+  }
+`;
