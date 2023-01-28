@@ -12,11 +12,8 @@ import {
 const initialStickers = [];
 
 export const WachlistMovies = () => {
-  const [moviesList, setMoviesList] = useLocalStorage(
-    'contact',
-    initialStickers
-  );
-  console.log(setMoviesList);
+  const [moviesList] = useLocalStorage('contact', initialStickers);
+
   const location = useLocation();
 
   return (
