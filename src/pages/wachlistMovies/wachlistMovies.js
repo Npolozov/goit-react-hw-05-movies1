@@ -16,7 +16,7 @@ export const WachlistMovies = () => {
     'contact',
     initialStickers
   );
-  console.log(moviesList);
+  console.log(setMoviesList);
   const location = useLocation();
 
   return (
