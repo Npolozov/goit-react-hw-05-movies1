@@ -13,6 +13,7 @@ import { lazy } from 'react';
 import { Video } from 'components/Video/Video';
 import { WatchlistMovies } from 'pages/watchlistMovies/watchlistMovies';
 import { WatchedlistMovies } from 'pages/watchedlistMovies/watchedlistMovies';
+import { ToastContainer } from 'react-toastify';
 
 export const App = () => {
   const Movies = lazy(() => import('pages/movies/Movies'));
@@ -38,6 +39,7 @@ export const App = () => {
           </Route>
         </Routes>
       </Container>
+      <ToastContainer autoClose={2000} position="top-right" />
       <GlobalStyle />
     </>
   );

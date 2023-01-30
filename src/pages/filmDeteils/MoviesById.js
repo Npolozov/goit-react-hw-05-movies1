@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addMoviesToWatchList } from 'redux/createSlice';
 import { watchList } from 'redux/selectors';
 // import { useLocalStorage } from 'helpers/hooks';
+import { toast } from 'react-toastify';
 
 const ERROR_MESSAGE = 'Произошла ошыбка';
 // const initialStickers = [];
@@ -85,6 +86,15 @@ export const MoviesById = () => {
   //   console.log(moviesList);
   // };
 
+  const addMovies = deteils => {
+    try {
+      dispatch(addMoviesToWatchList(deteils));
+      toast.success('You are successfully add movies');
+    } catch (error) {
+      toast.error('Try reloading the page');
+    }
+  };
+
   return (
     <>
       {loading && <Loadder />}
@@ -125,7 +135,7 @@ export const MoviesById = () => {
               >
                 <Button
                   disabled={watchListDisabled}
-                  onClick={() => dispatch(addMoviesToWatchList(deteils))}
+                  onClick={() => addMovies(deteils)}
                 >
                   AddMoviesList
                 </Button>
