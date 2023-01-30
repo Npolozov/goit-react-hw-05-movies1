@@ -1,4 +1,4 @@
-import { Footer } from './Movies.styled';
+
 import { useState, useEffect } from 'react';
 import { getMoviesbyQuery } from 'helpers/api';
 import { ToastContainer, toast } from 'react-toastify';
@@ -65,7 +65,6 @@ const Movies = () => {
       {isLoading && <Loadder />}
       {error && <p>{error}</p>}
       {searchQuery && !isLoading && <FilmList movies={movies} />}
-      {searchQuery && !isLoading && <Footer>Footer</Footer>}
       <ToastContainer autoClose={2000} position="top-right" />
     </>
   );

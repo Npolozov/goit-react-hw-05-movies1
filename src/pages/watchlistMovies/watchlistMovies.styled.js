@@ -6,6 +6,7 @@ export const ListSection = styled.section`
 `;
 
 export const Item = styled.li`
+  position: relative;
   width: 100%;
   border-radius: 5px;
   transition-property: box-shadow, transform;
@@ -42,4 +43,13 @@ export const List = styled.ul`
   @media screen and (max-width: 1200px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
+`;
+
+export const Button = styled.button`
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
 `;

@@ -11,8 +11,8 @@ import { MoviesById } from 'pages/filmDeteils/MoviesById';
 import { Layout } from 'components/SharedLayout/SharedLayout';
 import { lazy } from 'react';
 import { Video } from 'components/Video/Video';
-import { WachlistMovies } from 'pages/wachlistMovies/wachlistMovies';
-import { WachedlistMovies } from 'pages/wachedlistMovies/wachedlistMovies';
+import { WatchlistMovies } from 'pages/watchlistMovies/watchlistMovies';
+import { WatchedlistMovies } from 'pages/watchedlistMovies/watchedlistMovies';
 
 export const App = () => {
   const Movies = lazy(() => import('pages/movies/Movies'));
@@ -27,8 +27,8 @@ export const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/movies" element={<Movies />} />
-            <Route path="/wachlistmovies" element={<WachlistMovies />} />
-            <Route path="/wachedlistmovies" element={<WachedlistMovies />} />
+            <Route path="/watchlistmovies" element={<WatchlistMovies />} />
+            <Route path="/watchedlistmovies" element={<WatchedlistMovies />} />
             <Route path="*" element={<NotFound />} />
             <Route path="movies/:id" element={<MoviesById />}>
               <Route path="cast" element={<Cast />} />

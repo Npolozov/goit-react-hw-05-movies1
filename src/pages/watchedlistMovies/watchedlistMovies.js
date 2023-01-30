@@ -1,3 +1,3 @@
-export const WachedlistMovies = () => {
+export const WatchedlistMovies = () => {
   return <div>wachedlistMovies</div>;
 };

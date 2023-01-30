@@ -14,22 +14,29 @@ import {
   ImageFilms,
   Button,
 } from './MoviesById.styled';
-import { useLocalStorage } from 'helpers/hooks';
 import { nanoid } from 'nanoid';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMoviesToWatchList } from 'redux/createSlice';
+import { watchList } from 'redux/selectors';
+// import { useLocalStorage } from 'helpers/hooks';
 
 const ERROR_MESSAGE = 'Произошла ошыбка';
-const initialStickers = [];
+// const initialStickers = [];
 
 export const MoviesById = () => {
   const { id } = useParams();
   const [deteils, setDeteils] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [moviesList, setMoviesList] = useLocalStorage(
-    'contact',
-    initialStickers
-  );
+  // const [moviesList, setMoviesList] = useLocalStorage(
+  //   'contact',
+  //   initialStickers
+  // );
   const location = useLocation();
+  const dispatch = useDispatch();
+  const watchListMovies = useSelector(watchList);
+
+  console.log(watchListMovies);
 
   useEffect(() => {
     async function getMovies() {
@@ -66,14 +73,17 @@ export const MoviesById = () => {
 
   const genre = genresFilms();
 
-  const addMovies = () => {
-    if (!moviesList) {
-      return;
-    }
-    setMoviesList([...moviesList, deteils]);
-    console.log(deteils);
-    console.log(moviesList);
-  };
+  let storedMovies = watchListMovies.find(item => item.id === deteils.id);
+
+  const watchListDisabled = storedMovies ? true : false;
+
+  // const addMovies = () => {
+  //   if (!moviesList) {
+  //     return;
+  //   }
+  //   setMoviesList([...moviesList, deteils]);
+  //   console.log(moviesList);
+  // };
 
   return (
     <>
@@ -86,7 +96,7 @@ export const MoviesById = () => {
               Go Back
             </NavigationLink>
           </div>
-          <FilmsDeteils>
+          <FilmsDeteils key={deteils.id}>
             <ImageFilms
               src={`https://image.tmdb.org/t/p/w500/${deteils.poster_path}`}
               alt={deteils.name}
@@ -113,10 +123,12 @@ export const MoviesById = () => {
                   gap: 10,
                 }}
               >
-                <Button onClick={() => addMovies(deteils)}>
+                <Button
+                  disabled={watchListDisabled}
+                  onClick={() => dispatch(addMoviesToWatchList(deteils))}
+                >
                   AddMoviesList
                 </Button>
-                <Button>AddWatchedList</Button>
               </div>
             </div>
           </FilmsDeteils>

@@ -85,8 +85,7 @@ export const Button = styled.button`
   color: black;
   font-weight: 500;
 
-
-  :hover {
+  :not([disabled]):hover {
     color: white;
     background-color: orangered;
   }

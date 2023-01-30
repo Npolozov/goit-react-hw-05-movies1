@@ -1,4 +1,5 @@
-import { useLocalStorage } from 'helpers/hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { watchList } from 'redux/selectors';
 import { useLocation } from 'react-router-dom';
 import {
   List,
@@ -7,19 +8,22 @@ import {
   Item,
   ImageGalleryItemimage,
   ListSection,
-} from './wachlistMovies.styled';
+  Button,
+} from './watchlistMovies.styled';
+import { deleteMovies } from 'redux/createSlice';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
 
-const initialStickers = [];
-
-export const WachlistMovies = () => {
-  const [moviesList] = useLocalStorage('contact', initialStickers);
-
+export const WatchlistMovies = () => {
+  const watchListMovies = useSelector(watchList);
   const location = useLocation();
+  const dispatch = useDispatch();
 
-  return (
+  const movies = watchListMovies.length;
+
+  return movies > 0 ? (
     <ListSection>
       <List>
-        {moviesList.map(({ poster_path, id, name, title }) => (
+        {watchListMovies.map(({ poster_path, id, name, title }) => (
           <Item key={id}>
             <Link to={`/movies/${id}`} state={{ from: location }}>
               <ImageGalleryItemimage
@@ -32,9 +36,16 @@ export const WachlistMovies = () => {
               />
               <FilmName>{title ? title : name}</FilmName>
             </Link>
+            <Button onClick={() => dispatch(deleteMovies(id))}>
+              <IoIosCloseCircleOutline
+                style={{ width: 30, height: 30, color: 'orange' }}
+              />
+            </Button>
           </Item>
         ))}
       </List>
     </ListSection>
+  ) : (
+    <h2>Your list is empty</h2>
   );
 };
