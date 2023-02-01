@@ -11,9 +11,11 @@ const moviesSlice = createSlice({
       state.watchlistMovies.push(action.payload);
     },
     deleteMovies(state, action) {
-      state.watchlistMovies = state.watchlistMovies.filter(
-        movie => movie.id !== action.payload
+      const index = state.watchlistMovies.findIndex(
+        task => task.id === action.payload
       );
+      console.log(index);
+      state.watchlistMovies.splice(index, 1);
     },
   },
 });
