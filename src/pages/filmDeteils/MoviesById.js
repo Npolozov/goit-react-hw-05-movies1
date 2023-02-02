@@ -63,7 +63,7 @@ export const MoviesById = () => {
   }
 
   const genresFilms = () => {
-    if (deteils.genres.length > 3 || deteils.genres.length < 3) {
+    if (deteils.genres.length > 3 || deteils.genres.length === 0) {
       const movieGenres = deteils.genres.slice(0, 2);
       const newObject = { id: nanoid(), name: 'Other' };
       movieGenres.push(newObject);
@@ -73,6 +73,9 @@ export const MoviesById = () => {
   };
 
   const genre = genresFilms();
+
+  console.log(deteils.genres);
+  console.log(genre);
 
   let storedMovies = watchListMovies.find(item => item.id === deteils.id);
 
