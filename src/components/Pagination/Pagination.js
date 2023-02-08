@@ -4,9 +4,7 @@ import { useDispatch } from 'react-redux';
 import { changePages } from 'redux/createSlicePaga';
 
 export const CustomPagination = ({ currentPage, numOfPages = 100 }) => {
-  console.log(currentPage);
   const dispatch = useDispatch();
-
   const handlePageChange = page => {
     dispatch(changePages(page));
     window.scroll(0, 0);
