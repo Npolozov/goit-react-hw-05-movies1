@@ -12,7 +12,6 @@ import { Layout } from 'components/SharedLayout/SharedLayout';
 import { lazy } from 'react';
 import { Video } from 'components/Video/Video';
 import { WatchlistMovies } from 'pages/watchlistMovies/watchlistMovies';
-import { WatchedlistMovies } from 'pages/watchedlistMovies/watchedlistMovies';
 import { ToastContainer } from 'react-toastify';
 
 export const App = () => {
@@ -28,8 +27,7 @@ export const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/movies" element={<Movies />} />
-            <Route path="/watchlistmovies" element={<WatchlistMovies />} />
-            <Route path="/watchedlistmovies" element={<WatchedlistMovies />} />
+            <Route path="/watchlist" element={<WatchlistMovies />} />
             <Route path="*" element={<NotFound />} />
             <Route path="movies/:id" element={<MoviesById />}>
               <Route path="cast" element={<Cast />} />

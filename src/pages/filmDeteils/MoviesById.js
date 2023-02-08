@@ -20,6 +20,7 @@ import { addMoviesToWatchList } from 'redux/createSlice';
 import { watchList } from 'redux/selectors';
 // import { useLocalStorage } from 'helpers/hooks';
 import { toast } from 'react-toastify';
+import { unavailable } from 'config/config';
 
 const ERROR_MESSAGE = 'Произошла ошыбка';
 // const initialStickers = [];
@@ -98,6 +99,9 @@ export const MoviesById = () => {
     }
   };
 
+  const { poster_path, name, title, overview, release_date, vote_average } =
+    deteils;
+
   return (
     <>
       {loading && <Loadder />}
@@ -111,20 +115,23 @@ export const MoviesById = () => {
           </div>
           <FilmsDeteils key={deteils.id}>
             <ImageFilms
-              src={`https://image.tmdb.org/t/p/w500/${deteils.poster_path}`}
-              alt={deteils.name}
+              src={
+                poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                  : unavailable
+              }
+              alt={name}
             />
             <div>
               <TitleText>
-                {deteils.title ? deteils.title : deteils.name}(
-                {new Date(deteils.release_date).getFullYear()})
+                {title ? title : name}({new Date(release_date).getFullYear()})
               </TitleText>
               <ParagrafText>
                 Use Score:
-                <SpanText>{deteils.vote_average.toFixed(1)}</SpanText>
+                <SpanText>{vote_average.toFixed(1)}</SpanText>
               </ParagrafText>
               <ParagrafText>
-                Overview:<SpanText>{deteils.overview}</SpanText>
+                Overview:<SpanText>{overview}</SpanText>
               </ParagrafText>
               <ParagrafText>
                 Genres:<SpanText>{genre}</SpanText>{' '}

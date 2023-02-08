@@ -16,8 +16,7 @@ export const Layout = () => {
         </Link>
         <Link to="/movies">Movies</Link>
         <div style={{ marginLeft: 'auto' }}>
-          <Link to="/watchlistmovies">Watchlist</Link>
-          <Link to="/watchedlistmovies">Watched</Link>
+          <Link to="/watchlist">Watchlist</Link>
         </div>
       </Header>
       <Suspense fullback={<Loadder />}>
