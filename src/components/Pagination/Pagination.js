@@ -1,8 +1,14 @@
-import Pagination from '@mui/lab/Pagination';
+import { Pagination } from '@mui/lab';
+import { useDispatch } from 'react-redux';
 
-export const CustomPagination = ({ setPage, numOfPages = 100 }) => {
+import { changePages } from 'redux/createSlicePaga';
+
+export const CustomPagination = ({ currentPage, numOfPages = 100 }) => {
+  console.log(currentPage);
+  const dispatch = useDispatch();
+
   const handlePageChange = page => {
-    setPage(page);
+    dispatch(changePages(page));
     window.scroll(0, 0);
   };
 
@@ -18,6 +24,7 @@ export const CustomPagination = ({ setPage, numOfPages = 100 }) => {
       <Pagination
         onChange={e => handlePageChange(e.target.textContent)}
         count={numOfPages}
+        defaultPage={Number(currentPage)}
         color="warning"
         hideNextButton
         hidePrevButton

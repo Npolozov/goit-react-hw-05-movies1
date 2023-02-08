@@ -3,10 +3,13 @@ import { useEffect, useState } from 'react';
 import { FilmList } from 'components/filmList/FilmList';
 import { ToastContainer, toast } from 'react-toastify';
 import { CustomPagination } from 'components/Pagination/Pagination';
+import { pages } from 'redux/selectors';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);
+  const page = useSelector(pages);
+  console.log(page);
   useEffect(() => {
     async function getTrendingMovies() {
       try {
@@ -23,7 +26,7 @@ const Home = () => {
     <div>
       {movies?.length > 0 && <FilmList movies={movies} />}
       <ToastContainer autoClose={2000} position="top-right" />
-      <CustomPagination setPage={setPage} />
+      <CustomPagination currentPage={page} />
     </div>
   );
 };
