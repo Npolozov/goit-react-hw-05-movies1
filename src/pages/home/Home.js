@@ -17,7 +17,8 @@ const Home = () => {
         console.log(movies);
         setMovies(movies);
       } catch (error) {
-        toast.error('There is no data');
+        console.log(error);
+        toast.error('Something went wrong');
       }
     }
     getTrendingMovies();
