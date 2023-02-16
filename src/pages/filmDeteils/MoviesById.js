@@ -66,6 +66,7 @@ export const MoviesById = () => {
   const genresFilms = () => {
     if (deteils.genres.length > 3 || deteils.genres.length === 0) {
       const movieGenres = deteils.genres.slice(0, 2);
+      console.log(movieGenres);
       const newObject = { id: nanoid(), name: 'Other' };
       movieGenres.push(newObject);
       return movieGenres.map(genres => genres.name).join(', ');

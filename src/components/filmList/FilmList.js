@@ -8,6 +8,30 @@ import {
   ListSection,
 } from './FilmList.styled';
 
+const books = [
+  {
+    title: 'The Last Kingdom',
+    author: 'Bernard Cornwell',
+    rating: 8.38,
+  },
+  {
+    title: 'На берегу спокойных вод',
+    author: 'Роберт Шекли',
+    rating: 8.51,
+  },
+  {
+    title: 'Сон смешного человека',
+    author: 'Федор Достоевский',
+    rating: 7.75,
+  },
+];
+
+const second = { propC: 15 };
+
+const trd = { ...books, second };
+
+console.log(trd);
+
 export const FilmList = ({ movies }) => {
   const location = useLocation();
   return (
