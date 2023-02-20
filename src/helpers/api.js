@@ -4,15 +4,15 @@ axios.defaults.baseURL = 'https://api.themoviedb.org/';
 // const TRENGING_PATH = '/trending/movie/day';
 const API_KEY = '0b525a53cb370404cdd4aabe5119e729';
 
-export const getMovies = async page => {
-  const response = await axios.get('3/trending/movie/day', {
+export const getMovies = async (page, genres) => {
+  const { data } = await axios.get('3/trending/movie/day', {
     params: {
       api_key: API_KEY,
       page: `${page}`,
     },
   });
-  console.log(response.data);
-  return response.data.results;
+  console.log(data);
+  return data;
 };
 
 export const getMoviesbyQuery = async query => {
@@ -71,6 +71,29 @@ export const getVideo = async id => {
       append_to_response: 'videos',
     },
   });
-  console.log(data);
+  console.log(data.videos.results);
   return data.videos.results;
+};
+
+export const byGenres = async () => {
+  const { data } = await axios.get(`3/genre/movie/list`, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',
+    },
+  });
+  console.log(data);
+  return data.genres;
+};
+
+export const getGenres = async (page, genres) => {
+  const { data } = await axios.get('3/discover/movie', {
+    params: {
+      api_key: API_KEY,
+      page: `${page}`,
+      with_genres: `${genres}`,
+    },
+  });
+  console.log(data);
+  return data;
 };

@@ -13,6 +13,7 @@ import { lazy } from 'react';
 import { Video } from 'components/Video/Video';
 import { WatchlistMovies } from 'pages/watchlistMovies/watchlistMovies';
 import { ToastContainer } from 'react-toastify';
+import { Genres } from 'pages/Genres/Genres';
 
 export const App = () => {
   const Movies = lazy(() => import('pages/movies/Movies'));
@@ -27,6 +28,7 @@ export const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/movies" element={<Movies />} />
+            <Route path="/genres" element={<Genres />} />
             <Route path="/watchlist" element={<WatchlistMovies />} />
             <Route path="*" element={<NotFound />} />
             <Route path="movies/:id" element={<MoviesById />}>

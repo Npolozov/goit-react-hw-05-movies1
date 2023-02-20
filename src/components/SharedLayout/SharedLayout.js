@@ -15,6 +15,7 @@ export const Layout = () => {
           Home
         </Link>
         <Link to="/movies">Movies</Link>
+        <Link to="/genres">Genres</Link>
         <div style={{ marginLeft: 'auto' }}>
           <Link to="/watchlist">Watchlist</Link>
         </div>

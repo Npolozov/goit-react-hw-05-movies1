@@ -8,14 +8,15 @@ import { useSelector } from 'react-redux';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  const [total, setTotal] = useState('');
   const page = useSelector(pages);
-  console.log(page);
+
   useEffect(() => {
     async function getTrendingMovies() {
       try {
-        const movies = await getMovies(page);
-        console.log(movies);
-        setMovies(movies);
+        const { results, total_pages } = await getMovies(page);
+        setMovies(results);
+        setTotal(total_pages / 10);
       } catch (error) {
         console.log(error);
         toast.error('Something went wrong');
@@ -23,11 +24,14 @@ const Home = () => {
     }
     getTrendingMovies();
   }, [page]);
+
   return (
     <div>
       {movies?.length > 0 && <FilmList movies={movies} />}
       <ToastContainer autoClose={2000} position="top-right" />
-      <CustomPagination currentPage={page} />
+      {movies?.length > 0 && (
+        <CustomPagination currentPage={page} total={total} />
+      )}
     </div>
   );
 };
