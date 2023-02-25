@@ -12,9 +12,8 @@ export const ByGenres = ({
   useEffect(() => {
     async function getGenresMovies() {
       try {
-        const genres = await byGenres();
-        console.log(genres);
-        setGenres(genres);
+        const genresList = await byGenres();
+        setGenres(genresList);
       } catch (error) {
         console.log(error);
       }

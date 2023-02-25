@@ -11,6 +11,7 @@ const Home = () => {
   const [total, setTotal] = useState('');
   const page = useSelector(pages);
 
+
   useEffect(() => {
     async function getTrendingMovies() {
       try {

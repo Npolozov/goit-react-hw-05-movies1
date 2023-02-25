@@ -24,7 +24,7 @@ export const CustomPagination = ({ currentPage, total }) => {
       <Pagination
         onChange={e => handlePageChange(e.target.textContent)}
         count={total}
-        defaultPage={Number(currentPage)}
+        page={Number(currentPage)}
         color="warning"
         hideNextButton
         hidePrevButton
