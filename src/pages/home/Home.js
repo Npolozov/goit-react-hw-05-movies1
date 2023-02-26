@@ -25,8 +25,14 @@ const Home = () => {
     getTrendingMovies();
   }, [page]);
 
+  const handleClick = () => {
+    const { results } = getMovies(page);
+    setMovies(results);
+  };
+
   return (
     <div>
+      <button onClick={handleClick}>clicl</button>
       {movies?.length > 0 && <FilmList movies={movies} />}
       <ToastContainer autoClose={2000} position="top-right" />
       {movies?.length > 0 && (
