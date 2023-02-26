@@ -4,7 +4,9 @@ import { FilmList } from 'components/filmList/FilmList';
 import { toast } from 'react-toastify';
 import { ByGenres } from 'components/ByGenders/ByGenres';
 import useGenre from 'config/hooks';
-import { GenresCustomPagination } from 'components/Pagination/GenresPagination';
+import { CustomPagination } from 'components/Pagination/Pagination';
+import { useSelector } from 'react-redux';
+import { pages } from 'redux/selectors';
 
 export const Genres = () => {
   const [movies, setMovies] = useState();
@@ -12,19 +14,15 @@ export const Genres = () => {
   const [genresMovies, setGenresMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const numberGenres = useGenre(genresMovies);
-  const [genresPage, setGenresPage] = useState(1);
+  // const [genresPage, setGenresPage] = useState(1);
+  const page = useSelector(pages);
 
   console.log(genresMovies);
-
-  console.log(genresPage);
 
   useEffect(() => {
     async function getTrendingMovies() {
       try {
-        const { results, total_pages } = await getGenres(
-          genresPage,
-          numberGenres
-        );
+        const { results, total_pages } = await getGenres(page, numberGenres);
         setMovies(results);
         setTotal(Math.round(total_pages / 100));
       } catch (error) {
@@ -33,7 +31,7 @@ export const Genres = () => {
       }
     }
     getTrendingMovies();
-  }, [genresPage, numberGenres]);
+  }, [page, numberGenres]);
 
   return (
     <div>
@@ -42,15 +40,16 @@ export const Genres = () => {
         genresMovies={genresMovies}
         genres={genres}
         setGenres={setGenres}
-        setGenresPage={setGenresPage}
+        // setGenresPage={setGenresPage}
       />
       {movies?.length > 0 && <FilmList movies={movies} />}
       {movies?.length > 0 && (
-        <GenresCustomPagination
-          total={total}
-          setGenresPage={setGenresPage}
-          genresPage={genresPage}
-        />
+        <CustomPagination total={total} currentPage={page} />
+        // <GenresCustomPagination
+        //   total={total}
+        //   setGenresPage={setGenresPage}
+        //   genresPage={genresPage}
+        // />
       )}
     </div>
   );
