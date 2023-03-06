@@ -13,8 +13,6 @@ export const ByGenres = ({
 }) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {});
-
   useEffect(() => {
     async function getGenresMovies() {
       try {
