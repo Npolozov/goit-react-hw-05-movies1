@@ -8,7 +8,6 @@ import {
   ListSection,
 } from './FilmList.styled';
 
-
 export const FilmList = ({ movies }) => {
   const location = useLocation();
   return (
